@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mars Facts</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="jumbotron" style="text-align:center">
+            <h1>Mars Facts</h1>
+            <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Get Most Current Facts</a></p>
+
+        </div>
+        
+        <div class="col-md-12">
+            <h3>Mars News of the Day!</h1>
+            <h5>{{marsdata.article_title}}</h2>
+            {{marsdata.article_teaser}}
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <h3>Mars Image of the Day!</h3>
+                <img src = {{marsdata.big_img_url}} style = "max-width:100%">
+            </div>
+            <br>
+            <div class="col-md-4">
+                <div class="card" style="width: 20rem;">
+                    <div class="card-body">
+                        <h4 class="card-title">Mars Current Weather</h4>
+                        {{marsdata.mars_weather}}
+                    </div>
+                </div>
+                {{marsdata.facts_html|safe}}
+                
+                
+
+            </div>
+
+        </div>
+        <div class=container style="text-align:center" >
+
+            <div class="row" style="text-align:center">
+                <h1 style="text-align:center"> Mars Hemispheres</h1>
+            </div>
+
+            <div class="row">
+
+            {% for pic in marsdata.titles_urls%}
+
+                <div class="col-md-6 col-lg-6">
+                    <div class="card" style="width:100%;">
+                        <div class="card-body" style="text-align:center">
+                            <img src= {{pic.img_url}} style="max-width:100%">
+                            <h4 class="card-title">{{pic.title}}</h4>
+                        </div>
+                    </div>
+                </div>
+
+            {%endfor%}
+
+            </div>
+            
+        </div>         
+    </div>
+
+</body>
+
+</html>
